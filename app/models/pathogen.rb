@@ -16,5 +16,4 @@
 class Pathogen < ApplicationRecord
   has_many :multim
   belongs_to :taxonomic_table
-  has_many :pathogens_by_diseases
 end
