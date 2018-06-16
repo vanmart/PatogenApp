@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125184257) do
+ActiveRecord::Schema.define(version: 20180615213154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cultures", force: :cascade do |t|
+    t.string   "name"
+    t.string   "scientific_name"
+    t.text     "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "diseases", force: :cascade do |t|
+    t.string   "name"
+    t.text     "symptom"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "multims", force: :cascade do |t|
+    t.string   "link"
+    t.integer  "multim_type"
+    t.integer  "culture_id"
+    t.integer  "pathogen_id"
+    t.integer  "disease_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -53,15 +78,22 @@ ActiveRecord::Schema.define(version: 20180125184257) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
-  create_table "parkings", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "address"
-    t.integer  "phone",      null: false
-    t.string   "email",      null: false
-    t.string   "nit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
+  create_table "pathogens", force: :cascade do |t|
+    t.string   "name"
+    t.string   "scientific_name"
+    t.text     "description"
+    t.text     "epidemiology"
+    t.text     "economic_damage"
+    t.integer  "taxonomic_table_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "pathogens_by_diseases", force: :cascade do |t|
+    t.integer  "pathogen_id"
+    t.integer  "disease_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -72,6 +104,18 @@ ActiveRecord::Schema.define(version: 20180125184257) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
     t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
+
+  create_table "taxonomic_tables", force: :cascade do |t|
+    t.string   "kingdom"
+    t.string   "division"
+    t.string   "t_class"
+    t.string   "order"
+    t.string   "family"
+    t.string   "gender"
+    t.string   "species"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,13 +138,6 @@ ActiveRecord::Schema.define(version: 20180125184257) do
     t.string   "address"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "users_by_parkings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.integer  "parking_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

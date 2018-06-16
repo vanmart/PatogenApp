@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multims</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Multim type</th>
+      <th>Culture</th>
+      <th>Pathogen</th>
+      <th>Disease</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multims.each do |multim| %>
+      <tr>
+        <td><%= multim.link %></td>
+        <td><%= multim.multim_type %></td>
+        <td><%= multim.culture_id %></td>
+        <td><%= multim.pathogen_id %></td>
+        <td><%= multim.disease_id %></td>
+        <td><%= link_to 'Show', multim %></td>
+        <td><%= link_to 'Edit', edit_multim_path(multim) %></td>
+        <td><%= link_to 'Destroy', multim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multim', new_multim_path %>

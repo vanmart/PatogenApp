@@ -1,11 +1,19 @@
-<div class="navbar navbar-inverse navbar-static-top">
+<div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">YuxiTest</a>
+
+        <div class="navbar-brand">
+          <div class="brand__border">
+            <%= link_to image_tag("patogenapp_brand.png", :class=>"brand_image"), home_landing_path , :alt => "Vive movilidad" %>
+          </div>
+          <small class="align-middle small-brand-text" > <strong style="color: black">Patogen</strong><strong >App</strong> </small>
+        </div>
+
+
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-right ">
             <% if user_signed_in? %>

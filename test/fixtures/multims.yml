@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: multims
+#
+#  id          :integer          not null, primary key
+#  link        :string
+#  multim_type :integer
+#  culture_id  :integer
+#  pathogen_id :integer
+#  disease_id  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link: MyString
+  multim_type: 1
+  culture_id: 1
+  pathogen_id: 1
+  disease_id: 1
+
+two:
+  link: MyString
+  multim_type: 1
+  culture_id: 1
+  pathogen_id: 1
+  disease_id: 1

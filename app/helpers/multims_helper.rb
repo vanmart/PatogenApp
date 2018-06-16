@@ -1,0 +1,2 @@
+module MultimsHelper
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @multim.link %>
+</p>
+
+<p>
+  <strong>Multim type:</strong>
+  <%= @multim.multim_type %>
+</p>
+
+<p>
+  <strong>Culture:</strong>
+  <%= @multim.culture_id %>
+</p>
+
+<p>
+  <strong>Pathogen:</strong>
+  <%= @multim.pathogen_id %>
+</p>
+
+<p>
+  <strong>Disease:</strong>
+  <%= @multim.disease_id %>
+</p>
+
+<%= link_to 'Edit', edit_multim_path(@multim) %> |
+<%= link_to 'Back', multims_path %>

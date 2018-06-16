@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pathogen.name %>
+</p>
+
+<p>
+  <strong>Scientific name:</strong>
+  <%= @pathogen.scientific_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pathogen.description %>
+</p>
+
+<p>
+  <strong>Epidemiology:</strong>
+  <%= @pathogen.epidemiology %>
+</p>
+
+<p>
+  <strong>Economic damage:</strong>
+  <%= @pathogen.economic_damage %>
+</p>
+
+<%= link_to 'Edit', edit_pathogen_path(@pathogen) %> |
+<%= link_to 'Back', pathogens_path %>

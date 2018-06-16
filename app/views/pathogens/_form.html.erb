@@ -1,0 +1,42 @@
+<%= form_for(pathogen) do |f| %>
+  <% if pathogen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pathogen.errors.count, "error") %> prohibited this pathogen from being saved:</h2>
+
+      <ul>
+      <% pathogen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :scientific_name %>
+    <%= f.text_field :scientific_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :epidemiology %>
+    <%= f.text_area :epidemiology %>
+  </div>
+
+  <div class="field">
+    <%= f.label :economic_damage %>
+    <%= f.text_area :economic_damage %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

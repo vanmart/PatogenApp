@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kingdom:</strong>
+  <%= @taxonomic_table.kingdom %>
+</p>
+
+<p>
+  <strong>Division:</strong>
+  <%= @taxonomic_table.division %>
+</p>
+
+<p>
+  <strong>T class:</strong>
+  <%= @taxonomic_table.t_class %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @taxonomic_table.order %>
+</p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @taxonomic_table.family %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @taxonomic_table.gender %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @taxonomic_table.species %>
+</p>
+
+<%= link_to 'Edit', edit_taxonomic_table_path(@taxonomic_table) %> |
+<%= link_to 'Back', taxonomic_tables_path %>

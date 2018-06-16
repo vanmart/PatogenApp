@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Taxonomic Tables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kingdom</th>
+      <th>Division</th>
+      <th>T class</th>
+      <th>Order</th>
+      <th>Family</th>
+      <th>Gender</th>
+      <th>Species</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taxonomic_tables.each do |taxonomic_table| %>
+      <tr>
+        <td><%= taxonomic_table.kingdom %></td>
+        <td><%= taxonomic_table.division %></td>
+        <td><%= taxonomic_table.t_class %></td>
+        <td><%= taxonomic_table.order %></td>
+        <td><%= taxonomic_table.family %></td>
+        <td><%= taxonomic_table.gender %></td>
+        <td><%= taxonomic_table.species %></td>
+        <td><%= link_to 'Show', taxonomic_table %></td>
+        <td><%= link_to 'Edit', edit_taxonomic_table_path(taxonomic_table) %></td>
+        <td><%= link_to 'Destroy', taxonomic_table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Taxonomic Table', new_taxonomic_table_path %>

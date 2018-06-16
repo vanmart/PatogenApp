@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: taxonomic_tables
+#
+#  id         :integer          not null, primary key
+#  kingdom    :string
+#  division   :string
+#  t_class    :string
+#  order      :string
+#  family     :string
+#  gender     :string
+#  species    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kingdom: MyString
+  division: MyString
+  t_class: MyString
+  order: MyString
+  family: MyString
+  gender: MyString
+  species: MyString
+
+two:
+  kingdom: MyString
+  division: MyString
+  t_class: MyString
+  order: MyString
+  family: MyString
+  gender: MyString
+  species: MyString

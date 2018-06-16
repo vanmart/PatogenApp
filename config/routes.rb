@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :taxonomic_tables
+  resources :multims
+  resources :diseases
+  resources :pathogens
+  resources :cultures
   use_doorkeeper
 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   mount APINAME::Root => '/apiname'
 
-  resources :parkings
 
   devise_for :users
   root to: "home#landing"

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pathogens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Scientific name</th>
+      <th>Description</th>
+      <th>Epidemiology</th>
+      <th>Economic damage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pathogens.each do |pathogen| %>
+      <tr>
+        <td><%= pathogen.name %></td>
+        <td><%= pathogen.scientific_name %></td>
+        <td><%= pathogen.description %></td>
+        <td><%= pathogen.epidemiology %></td>
+        <td><%= pathogen.economic_damage %></td>
+        <td><%= link_to 'Show', pathogen %></td>
+        <td><%= link_to 'Edit', edit_pathogen_path(pathogen) %></td>
+        <td><%= link_to 'Destroy', pathogen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pathogen', new_pathogen_path %>
