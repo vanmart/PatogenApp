@@ -5,7 +5,10 @@ module APINAME
     class Root < Grape::API
       mount APINAME::V1::Users
       mount APINAME::V1::Cultures
+      mount APINAME::V1::Diseases
+      mount APINAME::V1::Pathogens
       mount APINAME::V1::Sessions
+
       #mount API::V1::Authors
     end
   end
