@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: disease_by_cultures
+#
+#  id         :integer          not null, primary key
+#  disease_id :integer
+#  culture_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  disease_id: 1
+  culture_id: 1
+
+two:
+  disease_id: 1
+  culture_id: 1

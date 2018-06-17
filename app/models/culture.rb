@@ -11,11 +11,27 @@
 #
 
 class Culture < ApplicationRecord
-  #has_many :pathogens_by_culture
-  #has_many :pathogens, through: :pathogens_by_culture
+
 
   #has_many :diseases_by_culture
   #has_many :diseases, through: :diseases_by_culture
 
   has_many :multims
+
+  has_many :pathogen_by_cultures
+  has_many :pathogens, through: :pathogen_by_cultures
+
+  has_many :disease_by_cultures
+  has_many :diseases, through: :disease_by_cultures
+
+
+  rails_admin do
+      configure :pathogen_by_cultures do
+          visible false
+      end
+      configure :disease_by_cultures do
+          visible false
+      end
+  end
+
 end

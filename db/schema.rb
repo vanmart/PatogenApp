@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180615213154) do
+ActiveRecord::Schema.define(version: 20180616232606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20180615213154) do
     t.text     "description"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "disease_by_cultures", force: :cascade do |t|
+    t.integer  "disease_id"
+    t.integer  "culture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "diseases", force: :cascade do |t|
@@ -78,6 +85,20 @@ ActiveRecord::Schema.define(version: 20180615213154) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "pathogen_by_cultures", force: :cascade do |t|
+    t.integer  "pathogen_id"
+    t.integer  "culture_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "pathogen_by_diseases", force: :cascade do |t|
+    t.integer  "disease_id"
+    t.integer  "pathogen_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "pathogens", force: :cascade do |t|
     t.string   "name"
     t.string   "scientific_name"
@@ -87,13 +108,6 @@ ActiveRecord::Schema.define(version: 20180615213154) do
     t.integer  "taxonomic_table_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-  end
-
-  create_table "pathogens_by_diseases", force: :cascade do |t|
-    t.integer  "pathogen_id"
-    t.integer  "disease_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "roles", force: :cascade do |t|
