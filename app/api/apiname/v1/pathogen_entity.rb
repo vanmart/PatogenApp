@@ -17,10 +17,8 @@ module APINAME
     class PathogenEntity < Grape::Entity
       expose :id
       expose :name
-      expose :scientific_name
       expose :description
       expose :epidemiology
-      expose :economic_damage
       expose :taxonomic_table_id
       expose :created_at
       expose :updated_at

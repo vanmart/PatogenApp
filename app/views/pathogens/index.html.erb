@@ -7,10 +7,8 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:scientific_name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:epidemiology) %></th>
-      <th><%= model_class.human_attribute_name(:economic_damage) %></th>
       <th><%= model_class.human_attribute_name(:taxonomic_table_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
@@ -21,10 +19,8 @@
       <tr>
         <td><%= pathogen.id %></td>
           <td><%= pathogen.name %></td>
-          <td><%= pathogen.scientific_name %></td>
           <td><%= pathogen.description %></td>
           <td><%= pathogen.epidemiology %></td>
-          <td><%= pathogen.economic_damage %></td>
           <td><%= pathogen.taxonomic_table_id %></td>
         <td><%=l pathogen.created_at, format: :long %></td>
         <td>

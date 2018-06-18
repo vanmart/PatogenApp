@@ -4,6 +4,7 @@ class CreatePathogens < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.text :epidemiology
+      t.integer :taxonomic_table_id
 
       t.timestamps
     end

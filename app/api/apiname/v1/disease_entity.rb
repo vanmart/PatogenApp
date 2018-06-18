@@ -12,6 +12,7 @@ module APINAME
       expose :id
       expose :name
       expose :symptom
+      expose :economic_damage
       expose :created_at
       expose :updated_at
     end

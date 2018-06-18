@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:symptom) %></th>
+      <th><%= model_class.human_attribute_name(:economic_damage) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', default: t("helpers.actions") %></th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= disease.id %></td>
           <td><%= disease.name %></td>
           <td><%= disease.symptom %></td>
+          <td><%= disease.economic_damage %></td>
         <td><%=l disease.created_at, format: :long %></td>
         <td>
           <%= link_to disease_path(disease), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
