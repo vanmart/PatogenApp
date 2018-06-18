@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Pathogen -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pathogen.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:scientific_name) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.scientific_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:epidemiology) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.epidemiology %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:economic_damage) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.economic_damage %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:taxonomic_table_id) %></dt>
+      <dd><pre class="prettyprint"><%= @pathogen.taxonomic_table_id %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Scientific name:</strong>
-  <%= @pathogen.scientific_name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @pathogen.description %>
-</p>
-
-<p>
-  <strong>Epidemiology:</strong>
-  <%= @pathogen.epidemiology %>
-</p>
-
-<p>
-  <strong>Economic damage:</strong>
-  <%= @pathogen.economic_damage %>
-</p>
-
-<%= link_to 'Edit', edit_pathogen_path(@pathogen) %> |
-<%= link_to 'Back', pathogens_path %>
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              pathogens_path, class: 'btn btn-default'  %>
+  <%= link_to t('.edit', default: t("helpers.links.edit")),
+              edit_pathogen_path(@pathogen), class: 'btn btn-default' %>
+  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+              pathogen_path(@pathogen),
+              method: 'delete',
+              data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+              class: 'btn btn-danger' %>
+</div>

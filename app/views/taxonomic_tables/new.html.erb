@@ -1,5 +1,5 @@
-<h1>New Taxonomic Table</h1>
-
-<%= render 'form', taxonomic_table: @taxonomic_table %>
-
-<%= link_to 'Back', taxonomic_tables_path %>
+<%- model_class = TaxonomicTable -%>
+<div class="page-header">
+  <h1><%=t '.title', default: [:'helpers.titles.new', 'New %{model}'], model: model_class.model_name.human.titleize %></h1>
+</div>
+<%= render partial: 'form' %>

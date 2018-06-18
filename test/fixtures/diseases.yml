@@ -1,20 +1,11 @@
-# == Schema Information
-#
-# Table name: diseases
-#
-#  id         :integer          not null, primary key
-#  name       :string
-#  symptom    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   name: MyString
   symptom: MyText
+  economic_damage: MyText
 
 two:
   name: MyString
   symptom: MyText
+  economic_damage: MyText

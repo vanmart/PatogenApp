@@ -69,6 +69,6 @@ class PathogensController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pathogen_params
-      params.require(:pathogen).permit(:name, :scientific_name, :description, :epidemiology, :economic_damage)
+      params.require(:pathogen).permit(:name, :description, :epidemiology)
     end
 end

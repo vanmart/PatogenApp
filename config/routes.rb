@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :pathogens
+  resources :diseases
   resources :taxonomic_tables
   resources :multims
-  resources :diseases
-  resources :pathogens
   resources :cultures
   use_doorkeeper
 

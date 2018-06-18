@@ -1,6 +1,5 @@
-<h1>Editing Multim</h1>
-
-<%= render 'form', multim: @multim %>
-
-<%= link_to 'Show', @multim %> |
-<%= link_to 'Back', multims_path %>
+<%- model_class = Multim -%>
+<div class="page-header">
+  <h1><%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'], model: model_class.model_name.human.titleize %></h1>
+</div>
+<%= render partial: 'form' %>

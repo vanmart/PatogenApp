@@ -1,42 +1,40 @@
-<%= form_for(multim) do |f| %>
-  <% if multim.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(multim.errors.count, "error") %> prohibited this multim from being saved:</h2>
-
-      <ul>
-      <% multim.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @multim, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :link, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :link, class: 'text_field form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :link %>
-    <%= f.text_field :link %>
+  </div>
+  <div class="form-group">
+    <%= f.label :multim_type, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :multim_type, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :culture_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :culture_id, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pathogen_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :pathogen_id, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :disease_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :disease_id, class: 'text_field form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :multim_type %>
-    <%= f.number_field :multim_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :culture_id %>
-    <%= f.number_field :culture_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pathogen_id %>
-    <%= f.number_field :pathogen_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :disease_id %>
-    <%= f.number_field :disease_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  multims_path, class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

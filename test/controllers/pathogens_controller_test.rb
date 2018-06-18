@@ -17,7 +17,7 @@ class PathogensControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pathogen" do
     assert_difference('Pathogen.count') do
-      post pathogens_url, params: { pathogen: { description: @pathogen.description, economic_damage: @pathogen.economic_damage, epidemiology: @pathogen.epidemiology, name: @pathogen.name, scientific_name: @pathogen.scientific_name } }
+      post pathogens_url, params: { pathogen: { description: @pathogen.description, epidemiology: @pathogen.epidemiology, name: @pathogen.name } }
     end
 
     assert_redirected_to pathogen_url(Pathogen.last)
@@ -34,7 +34,7 @@ class PathogensControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pathogen" do
-    patch pathogen_url(@pathogen), params: { pathogen: { description: @pathogen.description, economic_damage: @pathogen.economic_damage, epidemiology: @pathogen.epidemiology, name: @pathogen.name, scientific_name: @pathogen.scientific_name } }
+    patch pathogen_url(@pathogen), params: { pathogen: { description: @pathogen.description, epidemiology: @pathogen.epidemiology, name: @pathogen.name } }
     assert_redirected_to pathogen_url(@pathogen)
   end
 

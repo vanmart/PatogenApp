@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Multim -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Link:</strong>
-  <%= @multim.link %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:link) %></dt>
+      <dd><pre class="prettyprint"><%= @multim.link %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:multim_type) %></dt>
+      <dd><pre class="prettyprint"><%= @multim.multim_type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:culture_id) %></dt>
+      <dd><pre class="prettyprint"><%= @multim.culture_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pathogen_id) %></dt>
+      <dd><pre class="prettyprint"><%= @multim.pathogen_id %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:disease_id) %></dt>
+      <dd><pre class="prettyprint"><%= @multim.disease_id %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Multim type:</strong>
-  <%= @multim.multim_type %>
-</p>
-
-<p>
-  <strong>Culture:</strong>
-  <%= @multim.culture_id %>
-</p>
-
-<p>
-  <strong>Pathogen:</strong>
-  <%= @multim.pathogen_id %>
-</p>
-
-<p>
-  <strong>Disease:</strong>
-  <%= @multim.disease_id %>
-</p>
-
-<%= link_to 'Edit', edit_multim_path(@multim) %> |
-<%= link_to 'Back', multims_path %>
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              multims_path, class: 'btn btn-default'  %>
+  <%= link_to t('.edit', default: t("helpers.links.edit")),
+              edit_multim_path(@multim), class: 'btn btn-default' %>
+  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+              multim_path(@multim),
+              method: 'delete',
+              data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+              class: 'btn btn-danger' %>
+</div>

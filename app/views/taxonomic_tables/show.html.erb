@@ -1,39 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = TaxonomicTable -%>
+<div class="page-header">
+  <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Kingdom:</strong>
-  <%= @taxonomic_table.kingdom %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:kingdom) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.kingdom %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:division) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.division %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:t_class) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.t_class %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:order) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.order %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:family) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.family %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:gender) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.gender %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:species) %></dt>
+      <dd><pre class="prettyprint"><%= @taxonomic_table.species %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Division:</strong>
-  <%= @taxonomic_table.division %>
-</p>
-
-<p>
-  <strong>T class:</strong>
-  <%= @taxonomic_table.t_class %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @taxonomic_table.order %>
-</p>
-
-<p>
-  <strong>Family:</strong>
-  <%= @taxonomic_table.family %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @taxonomic_table.gender %>
-</p>
-
-<p>
-  <strong>Species:</strong>
-  <%= @taxonomic_table.species %>
-</p>
-
-<%= link_to 'Edit', edit_taxonomic_table_path(@taxonomic_table) %> |
-<%= link_to 'Back', taxonomic_tables_path %>
+<div class="form-group">
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              taxonomic_tables_path, class: 'btn btn-default'  %>
+  <%= link_to t('.edit', default: t("helpers.links.edit")),
+              edit_taxonomic_table_path(@taxonomic_table), class: 'btn btn-default' %>
+  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+              taxonomic_table_path(@taxonomic_table),
+              method: 'delete',
+              data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+              class: 'btn btn-danger' %>
+</div>

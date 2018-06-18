@@ -1,52 +1,52 @@
-<%= form_for(taxonomic_table) do |f| %>
-  <% if taxonomic_table.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(taxonomic_table.errors.count, "error") %> prohibited this taxonomic_table from being saved:</h2>
-
-      <ul>
-      <% taxonomic_table.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @taxonomic_table, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :kingdom, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :kingdom, class: 'text_field form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :kingdom %>
-    <%= f.text_field :kingdom %>
+  </div>
+  <div class="form-group">
+    <%= f.label :division, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :division, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :t_class, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :t_class, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :order, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :order, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :family, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :family, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :gender, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :gender, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :species, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :species, class: 'text_field form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :division %>
-    <%= f.text_field :division %>
-  </div>
-
-  <div class="field">
-    <%= f.label :t_class %>
-    <%= f.text_field :t_class %>
-  </div>
-
-  <div class="field">
-    <%= f.label :order %>
-    <%= f.text_field :order %>
-  </div>
-
-  <div class="field">
-    <%= f.label :family %>
-    <%= f.text_field :family %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
-  </div>
-
-  <div class="field">
-    <%= f.label :species %>
-    <%= f.text_field :species %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  taxonomic_tables_path, class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

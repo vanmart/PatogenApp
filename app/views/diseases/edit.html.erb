@@ -1,6 +1,5 @@
-<h1>Editing Disease</h1>
-
-<%= render 'form', disease: @disease %>
-
-<%= link_to 'Show', @disease %> |
-<%= link_to 'Back', diseases_path %>
+<%- model_class = Disease -%>
+<div class="page-header">
+  <h1><%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'], model: model_class.model_name.human.titleize %></h1>
+</div>
+<%= render partial: 'form' %>
