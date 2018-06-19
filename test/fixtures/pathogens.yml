@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: pathogens
+#
+#  id                 :integer          not null, primary key
+#  name               :string
+#  description        :text
+#  epidemiology       :text
+#  taxonomic_table_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
