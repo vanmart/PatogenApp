@@ -65,7 +65,6 @@ gem 'rails_admin', '~> 1.2'
 # User permisions
 gem 'cancancan'
 
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
