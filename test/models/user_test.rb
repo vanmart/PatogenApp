@@ -16,10 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string           not null
-#  last_name              :string           not null
-#  document               :integer          not null
 #  phone                  :string           not null
-#  address                :string
 #
 
 require 'test_helper'
