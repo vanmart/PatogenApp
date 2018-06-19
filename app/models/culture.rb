@@ -12,11 +12,7 @@
 
 class Culture < ApplicationRecord
 
-
-  #has_many :diseases_by_culture
-  #has_many :diseases, through: :diseases_by_culture
-
-  has_many :multims
+  has_many :multim
 
   has_many :pathogen_by_cultures
   has_many :pathogens, through: :pathogen_by_cultures
@@ -24,8 +20,16 @@ class Culture < ApplicationRecord
   has_many :disease_by_cultures
   has_many :diseases, through: :disease_by_cultures
 
+  accepts_nested_attributes_for :multim, :allow_destroy => true
+  #accepts_nested_attributes_for :pathogens, :allow_destroy => true
+  #accepts_nested_attributes_for :diseases, :allow_destroy => true
 
   rails_admin do
+
+      configure :diseases do
+          visible false
+      end
+
       configure :pathogen_by_cultures do
           visible false
       end

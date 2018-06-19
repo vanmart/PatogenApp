@@ -16,10 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string           not null
-#  last_name              :string           not null
-#  document               :integer          not null
 #  phone                  :string           not null
-#  address                :string
 #
 
 class User < ApplicationRecord
@@ -37,17 +34,19 @@ class User < ApplicationRecord
 
   validates :name, presence: true,
                     format: { with: /\A\S[a-z ñ A-Z Ñ\s]*\S\z/ }
-  validates :last_name, presence: true,
-                    format: { with: /\A\S[a-z ñ A-Z Ñ\s]*\S\z/ }
-  validates :address, presence: true
 
-  validates :document, presence: true,
-                    :numericality => {:only_integer => true},uniqueness: { case_sensitive: false }
+
   validates :phone, presence: true,
                     :numericality => {:only_integer => true}
   validates :email, presence: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+
+  #validates :last_name, presence: true,format: { with: /\A\S[a-z ñ A-Z Ñ\s]*\S\z/ }
+  #validates :address, presence: true
+
+  #validates :document, presence: true,:numericality => {:only_integer => true},uniqueness: { case_sensitive: false }
+
 
   def assign_default_role
     #self.add_role(:RegularUser) if self.roles.blank?
