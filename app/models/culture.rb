@@ -23,7 +23,7 @@ class Culture < ApplicationRecord
   accepts_nested_attributes_for :multim, :allow_destroy => true
   #accepts_nested_attributes_for :pathogens, :allow_destroy => true
   #accepts_nested_attributes_for :diseases, :allow_destroy => true
-  #ready
+
   rails_admin do
 
       configure :diseases do
