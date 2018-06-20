@@ -1,7 +1,7 @@
 
-  <div class="col-md-6 col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-3  forms__border">
-    <h1 style="color: yellow">Bienvenido</h1>
-    <hr>
+  <div class="col-md-6 col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-3  forms__border black-ground">
+    <h1 style="color: white">Bienvenido</h1>
+    <hr class="hr-color">
 
     <%= form_for('user', url: user_session_path) do |f| %>
 
@@ -18,7 +18,7 @@
 
     <div class="actions">
       <%= button_tag "Edit", :type => "submit", class: "login__button" do %>
-        Entrar <%= fa_icon "sign-in"%>
+        Entrar <%= fa_icon "sign-in", class: "pgreen"%>
       <%end%>
     </div>
 

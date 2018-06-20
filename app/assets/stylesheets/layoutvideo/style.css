@@ -90,8 +90,18 @@ th{
   background: none;
 }
 
+hr{
+  border-top: 1px solid #47c70e;
+}
+
 .landing-icon{
   width: 10%;
+}
+
+.black-ground{
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 20px;
+  padding-top: 20px;
 }
 
 .datatables-wrap{
@@ -149,33 +159,34 @@ th{
   Landing buttons
 ============================================================================= */
 
-.content__wy {
+.content__wg {
   display: inline-block;
   width: 100%;
   margin: 0;
   padding: 12px 48px;
-  border: solid 4px #fff;
-  color: yellow;
+  border: solid 4px green;
+  color: white;
   font-size: 20px;
   text-decoration: none;
   margin-bottom: 2%;
   background: none;
-  border-radius: 50px 15px;
+  border-radius: 50px 50px;
+  background-color: rgba(0, 0, 0, 0.4);
   margin-top: 2%;
 }
 
-.content__wy:hover {
+.content__wg:hover {
   display: inline-block;
   width: 100%;
   margin: 0;
   padding: 12px 48px;
-  border: solid 4px yellow;
+  border: solid 4px white;
   color: #fff;
   font-size: 20px;
   text-decoration: none;
   margin-bottom: 2%;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 50px 15px;
+
+  border-radius: 50px 50px;
   margin-top: 2%;
 }
 
@@ -210,14 +221,14 @@ th{
   width: 100%;
   margin: 0;
   padding: 10px;
-  color: yellow;
+  color: white;
   font-size: 20px;
   text-decoration: none;
-  border: solid 3px #fff;
+  border: solid 3px green;
   margin-bottom: 3%;
   background: none;
   border-radius: 10px;
-  border-radius: 50px 15px;
+  border-radius: 50px 50px;
 }
 
 /* =============================================================================
@@ -225,16 +236,19 @@ th{
 ============================================================================= */
 
 .form__border{
-  border: 2px solid yellow;
-  border-radius: 50px 15px;
+  border: 2px solid white;
+  border-radius: 50px 50px;
   padding: 2%;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.pgreen{
+  color: #47c70e;
+}
 .login__button:hover {
   color: white;
   font-size: 20px;
-  border: solid 3px yellow;
+  border: solid 3px white;
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -278,7 +292,7 @@ th{
   text-decoration: none;
   margin-bottom: 2%;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 50px 15px;
+  border-radius: 50px 50px;
   margin-top: 10%;
 }
 
@@ -498,13 +512,13 @@ h1 {
       .landing-icon{
         width: 25%;
       }
-      .content__wy {
+      .content__wg {
         padding: 12px 30px;
         font-size: 16px;
         margin-top: 2%;
       }
 
-      .content__wy:hover {
+      .content__wg:hover {
         padding: 12px 30px;
         color: #fff;
         font-size: 16px;
@@ -593,22 +607,22 @@ h1 {
         margin-bottom: 2%;
       }
 
-      .content__wy {
+      .content__wg {
         padding: 12px 30px;
         color: yellow;
         font-size: 16px;
         margin-bottom: 2%;
         background: none;
-        border-radius: 50px 15px;
+        border-radius: 50px 50px;
         margin-top: 2%;
       }
 
-      .content__wy:hover {
+      .content__wg:hover {
         padding: 12px 30px;
         color: #fff;
         font-size: 16px;
         margin-bottom: 2%;
-        border-radius: 50px 15px;
+        border-radius: 50px 50px;
         margin-top: 2%;
       }
 
