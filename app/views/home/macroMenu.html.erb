@@ -1,0 +1,69 @@
+<div class="container text-center">
+<div class="owl-carousel">
+  <div class="card black-ground">
+    <div >
+      <div style="margin-bottom: 10px">
+        <h4><b>Patogenos</b></h4>
+        <p>Micro organismos que afectan tu cultivo.</p>
+      </div>
+      <hr>
+      <%= image_tag("pathogen.png", class: "")%>
+
+      <div>asd</div>
+      <hr style="border-top: 1px solid white;">
+      <div>asd</div>
+    </div>
+  </div>
+  <div class="card black-ground">
+    <div >
+      <div style="margin-bottom: 10px">
+        <h4><b>Cultivos</b></h4>
+        <p>jejejj juemadre</p>
+      </div>
+      <hr>
+      <%= image_tag("cultivo.png", class: "")%>
+      <div>asd</div>
+      <hr style="border-top: 1px solid white;">
+      <div>asd</div>
+    </div>
+  </div>
+  <div class="card black-ground">
+    <div >
+      <div style="margin-bottom: 10px">
+        <h4><b>Enfermedades</b></h4>
+        <p>Descripcion del impacto del patogeno y sus consecuencias</p>
+      </div>
+      <hr>
+      <%= image_tag("disease.png", class: "")%>
+      <div>asd</div>
+      <hr style="border-top: 1px solid white;">
+      <div>asd</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container text-center">Algunt texto o contenido</div>
+
+<script type="text/javascript">
+
+  $(".owl-carousel").owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    margin:20,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
+        }
+    }
+}
+
+    );
+</script>

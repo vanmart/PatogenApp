@@ -16,5 +16,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require toastr
+//= require owl.carousel
 //= require turbolinks
 //= require_tree .

@@ -49,6 +49,9 @@ body {
 th{
   color: white;
 }
+p,b{
+  color: white
+}
 
 .yellow-link{
   color: yellow;
@@ -122,7 +125,7 @@ hr{
   top: 2%;
   z-index: 2;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 95%;
 
 }
 
@@ -698,6 +701,4 @@ h1 {
         margin-bottom: 25px;
       }
     }
-
-
 
