@@ -164,7 +164,7 @@ hr{
   width: 100%;
   margin: 0;
   padding: 12px 48px;
-  border: solid 4px green;
+  border: solid 4px white;
   color: white;
   font-size: 20px;
   text-decoration: none;
@@ -180,7 +180,7 @@ hr{
   width: 100%;
   margin: 0;
   padding: 12px 48px;
-  border: solid 4px white;
+  border: solid 4px green;
   color: #fff;
   font-size: 20px;
   text-decoration: none;
@@ -224,7 +224,7 @@ hr{
   color: white;
   font-size: 20px;
   text-decoration: none;
-  border: solid 3px green;
+  border: solid 3px white;
   margin-bottom: 3%;
   background: none;
   border-radius: 10px;
@@ -248,9 +248,9 @@ hr{
 .login__button:hover {
   color: white;
   font-size: 20px;
-  border: solid 3px white;
+  border: solid 3px green;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.5);
+
 }
 
 .ticket-input-size{
