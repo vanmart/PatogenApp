@@ -57,7 +57,7 @@
 ============================================================================= */
 
     /* different techniques for iPad screening */
-    @media only screen and (min-width: 0px) and (max-width: 389px) {
+    @media only screen and (min-width: 0px) and (max-width: 560px) {
       /* For portrait layouts only */
       * {
         box-sizing: border-box;
@@ -118,10 +118,6 @@
 
     }
 
-    @media only screen and (min-width: 390px) and (max-width: 767px) {
-      /* For portrait layouts only */
-
-    }
 
     @media only screen and (min-width: 768px) and (max-width: 919px) {
         /* For portrait layouts only */
@@ -133,59 +129,55 @@
 
     }
 
-     @media only screen and (min-width: 1367px) {
+    @media only screen and (min-width: 1367px) {
 
-    * {
-      box-sizing: border-box;
+      * {
+        box-sizing: border-box;
+      }
+
+      .slider {
+          width: 70%;
+          margin: 0px auto;
+          margin-top: 100px;
+      }
+
+      .slick-slide {
+        margin: 0px 20px;
+      }
+
+      .slick-slide img {
+        width: 100%;
+        height: 500px;
+
+      }
+
+      .slick-slide div {
+        width: 100%;
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        color: black;
+      }
+
+
+      .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: .2;
+      }
+
+      .slick-active {
+        opacity: .5;
+      }
+
+      .slick-current {
+        opacity: 1;
+      }
+
+      .card{
+        box-shadow: 5px 1px 5px rgb(3, 35, 7), 4px 0px 10px rgb(15, 62, 1);
+      }
     }
-
-    .slider {
-        width: 70%;
-        margin: 0px auto;
-        margin-top: 100px;
-    }
-
-    .slick-slide {
-      margin: 0px 20px;
-    }
-
-    .slick-slide img {
-      width: 100%;
-      height: 500px;
-
-    }
-
-    .slick-slide div {
-      width: 100%;
-    }
-
-    .slick-prev:before,
-    .slick-next:before {
-      color: black;
-    }
-
-
-    .slick-slide {
-      transition: all ease-in-out .3s;
-      opacity: .2;
-    }
-
-    .slick-active {
-      opacity: .5;
-    }
-
-    .slick-current {
-      opacity: 1;
-    }
-
-    .card{
-      box-shadow: 5px 1px 5px rgb(3, 35, 7), 4px 0px 10px rgb(15, 62, 1);
-    }
-    }
-
-
-
-
 
 
   </style>
@@ -195,61 +187,60 @@
       <div class="text-center">
         <div style="margin-bottom: 10px">
           <h4><b>Patogenos</b></h4>
-         <p>Micro organismos que afectan tu cultivo.</p>
+          <p>Micro organismos que afectan tu cultivo.</p>
         </div>
         <hr>
         <div class="text-center">
           <%= image_tag("pathogen.png", class: "")%>
         </div>
         <hr>
-        <label>Informacion: asdasdasdasdasd</label>
-        <p>sdfdasdsaasdasd asdas 324324 234234dsf</p>
+        <a href="" class="btn btn-default btn-ver-mas">Ver más</a>
       </div>
     </div>
 
     <div class="black-ground card text-center">
-      <div class="text-center">
+      <div class="text-center ver-mas">
         <div style="margin-bottom: 10px">
           <h4><b>Cultivo</b></h4>
-         <p>Pracrica de produccion de alguna especie algunos de vital inportancia nutricional para la vida.</p>
+          <p>Practicas de produccion.</p>
         </div>
         <hr>
         <div class="text-center">
           <%= image_tag("cultivo.png", class: "")%>
         </div>
         <hr>
-        <label>Informacion: asdasdasdasdasd</label>
-        <p>sdfdasdsaasdasd asdas 324324 234234dsf</p>
+        <a href="" class="btn btn-default btn-ver-mas">Ver más</a>
       </div>
     </div>
     <div class="black-ground card text-center">
-      <div class="text-center">
+      <div class="text-center ver-mas">
         <div style="margin-bottom: 10px">
           <h4><b>Enfermedades</b></h4>
-         <p>Descripcion del impacto del patogeno y sus consecuencias.</p>
+          <p>Impacto del patogeno y sus consecuencias.</p>
         </div>
         <hr>
         <div class="text-center" >
           <%= image_tag("disease.png", class: "")%>
         </div>
         <hr>
-        <label>Informacion: asdasdasdasdasd</label>
-        <p>sdfdasdsaasdasd asdas 324324 234234dsf</p>
+
+        <a href="" class="btn btn-default btn-ver-mas">Ver más</a>
       </div>
     </div>
     <div class="black-ground card text-center">
-      <div class="text-center">
+      <div class="text-center ver-mas">
         <div style="margin-bottom: 10px">
-          <h4><b>Reportes de brotes</b></h4>
-         <p>Informate, reporta o reacciona a tiempo ante brotes de patogenos o enfermedades en tus cultivos.</p>
+          <h4><b>Reporte de brotes</b></h4>
+          <p>Informate, reporta o reacciona a tiempo.</p>
         </div>
         <hr>
         <div class="text-center">
           <%= image_tag("smart2.png", class: "")%>
         </div>
         <hr>
-        <label>Informacion: asdasdasdasdasd</label>
-        <p>sdfdasdsaasdasd asdas 324324 234234dsf</p>
+        <div class="">
+          <a href="" class="btn btn-default btn-ver-mas">Ver más</a>
+        </div>
       </div>
     </div>
   </section>
@@ -257,10 +248,55 @@
   <script type="text/javascript">
     $(document).on('ready', function() {
       $(".center").slick({
-        dots: true,
+        dots: false,
         infinite: true,
         centerMode: true,
+        slidesToShow: 3,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+    {
+      breakpoint: 1366,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
         slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 340,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    ],
         slidesToScroll: 1
       });
     });
