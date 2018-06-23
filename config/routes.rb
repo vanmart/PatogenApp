@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   get 'home/landing'
   get 'home/welcome'
 
-  get 'home/macroMenu'
+  get 'macro', to: 'home#macroMenu', as: :macro
   get 'menu' ,to: 'home#menu', as: :menu
+  get 'reports', to: 'home#reports', as: :reports
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

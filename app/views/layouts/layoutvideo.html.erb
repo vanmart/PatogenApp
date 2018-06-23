@@ -12,14 +12,18 @@
     <%= favicon_link_tag 'favicon.ico' %>
 
 
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,300,700">
     <link href="https://fonts.googleapis.com/css?family=Wendy+One|Anton" rel="stylesheet">
+
+
+
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <%= stylesheet_link_tag    'layoutvideo', media: 'all', 'data-turbolinks-track' => true ,'data-turbolinks-track': 'reload' %>
      <!-- Datatable CDN -->
-    <%= stylesheet_link_tag 'https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css', media: "all", 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css', media: "all", 'data-turbolinks-track': 'reload' %>
 
     <%= stylesheet_link_tag 'https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css', media: "all", 'data-turbolinks-track': 'reload' %>
 
@@ -32,8 +36,9 @@
     <%= javascript_include_tag "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" %>
     <%= javascript_include_tag "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
 
-    <%= javascript_include_tag 'https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js'%>
+    <%= javascript_include_tag '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'%>
     <%= javascript_include_tag 'https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js'%>
+
 
 
 
@@ -47,7 +52,7 @@
       <%= render 'partials/navbar'%>
     <%end%>
 
-    <div class="content " style="margin-bottom: 110px;">
+    <div class="content c-margins " style="margin-bottom: 110px;">
 
       <% unless flash.empty? %>
         <script type="text/javascript">
@@ -58,7 +63,9 @@
         </script>
       <% end %>
 
-      <%= yield %>
+        <%= yield %>
+
+
 
       <footer id="footer" class="navbar-fixed-bottom text-center">
             <p style="color:white; margin-bottom: 0px;">

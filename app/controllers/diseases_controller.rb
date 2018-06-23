@@ -1,6 +1,6 @@
 class DiseasesController < ApplicationController
   before_action :set_disease, only: [:show, :edit, :update, :destroy]
-
+  #layout "layoutvideo"
   # GET /diseases
   # GET /diseases.json
   def index

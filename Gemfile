@@ -47,7 +47,8 @@ gem "font-awesome-rails"
 gem 'font-awesome-sass'
 
 #Carrusel
-gem 'owlcarousel-rails'
+#gem 'owlcarousel-rails'
+gem 'owlcarousel2'
 
 # bootstrap datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'

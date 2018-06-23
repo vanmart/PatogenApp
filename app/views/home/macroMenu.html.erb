@@ -1,57 +1,88 @@
 <div class="container text-center">
-<div class="owl-carousel">
-  <div class="card black-ground">
-    <div >
-      <div style="margin-bottom: 10px">
-        <h4><b>Patogenos</b></h4>
-        <p>Micro organismos que afectan tu cultivo.</p>
-      </div>
-      <hr>
-      <%= image_tag("pathogen.png", class: "")%>
+  <section>
+    <div class="loop owl-carousel owl-theme">
+              <div class="item black-ground card text-center">
 
-      <div>asd</div>
-      <hr style="border-top: 1px solid white;">
-      <div>asd</div>
-    </div>
-  </div>
-  <div class="card black-ground">
-    <div >
-      <div style="margin-bottom: 10px">
-        <h4><b>Cultivos</b></h4>
-        <p>jejejj juemadre</p>
-      </div>
-      <hr>
-      <%= image_tag("cultivo.png", class: "")%>
-      <div>asd</div>
-      <hr style="border-top: 1px solid white;">
-      <div>asd</div>
-    </div>
-  </div>
-  <div class="card black-ground">
-    <div >
-      <div style="margin-bottom: 10px">
-        <h4><b>Enfermedades</b></h4>
-        <p>Descripcion del impacto del patogeno y sus consecuencias</p>
-      </div>
-      <hr>
-      <%= image_tag("disease.png", class: "")%>
-      <div>asd</div>
-      <hr style="border-top: 1px solid white;">
-      <div>asd</div>
-    </div>
-  </div>
-</div>
-</div>
+                  <div class="text-center ver-mas">
+                    <div style="margin-bottom: 10px">
+                      <h4><b>Patogenos</b></h4>
+                      <p>Micro organismos que afectan tu cultivo.</p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                      <%= image_tag("pathogen.png", class: "")%>
+                    </div>
+                    <hr>
+                    <%= link_to pathogens_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+                       Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+                    <%end%>
+                  </div>
 
-<div class="container text-center">Algunt texto o contenido</div>
+              </div>
+              <div class="item black-ground card text-center">
+
+                  <div class="text-center ver-mas">
+                    <div style="margin-bottom: 10px">
+                      <h4><b>Cultivo</b></h4>
+                      <p>Practicas de produccion.</p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                      <%= image_tag("cultivo.png", class: "")%>
+                    </div>
+                    <hr>
+                    <%= link_to cultures_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+                       Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+                    <%end%>
+                  </div>
+
+              </div>
+              <div class="item black-ground card text-center">
+                  <div class="text-center ver-mas">
+                    <div style="margin-bottom: 10px">
+                      <h4><b>Enfermedades</b></h4>
+                      <p>Impacto del patogeno y sus consecuencias.</p>
+                    </div>
+                    <hr>
+                    <div class="text-center" >
+                      <%= image_tag("disease.png", class: "")%>
+                    </div>
+                    <hr>
+                    <%= link_to diseases_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+                       Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+                    <%end%>
+                  </div>
+              </div>
+              <div class="item black-ground card text-center">
+                  <div class="text-center ver-mas">
+                    <div style="margin-bottom: 10px">
+                      <h4><b>Reporte de brotes</b></h4>
+                      <p>Informate, reporta o reacciona a tiempo.</p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                      <%= image_tag("smart2.png", class: "")%>
+                    </div>
+                    <hr>
+                    <%= link_to reports_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+                       Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+                    <%end%>
+                  </div>
+              </div>
+            </div>
+  </section>
+</div>
 
 <script type="text/javascript">
-
   $(".owl-carousel").owlCarousel({
     loop:true,
     margin:10,
+    dots:true,
     nav:true,
     margin:20,
+    center:true,
+    stagePadding:3,
+    nav: true,
     responsive:{
         0:{
             items:1

@@ -14,11 +14,8 @@
  *= require bootstrap-datetimepicker
  *= require devise_bootstrap_views
  *= require toastr
- *= require owl.carousel
- *= require owl.theme
+ *= require owlcarousel2/owl.carousel
+ *= import  owlcarousel2/owl.theme.green
  *= require_self
  *= require_tree .
  */
-
-
-
