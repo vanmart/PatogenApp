@@ -125,13 +125,13 @@
     }
 
     .slider {
-        width: 70%;
+        width: 100%;
         margin: 0px auto;
-        margin-top: 100px;
+
     }
 
     .slick-slide {
-      margin: 0px 20px;
+      margin: 0px 5px;
     }
 
     .slick-slide img {
@@ -182,7 +182,7 @@
       .slider {
           width: 100%;
           margin: 0px auto;
-          margin-top: 100px;
+
       }
 
       .slick-slide {
@@ -232,6 +232,11 @@
         right: 0px;
       }
 
+      .slick-jumbotron{
+          padding: 10px 10px;
+      }
+
+
     }
 
 
@@ -252,9 +257,9 @@
       }
 
       .slider {
-          width: 70%;
+          width: 100%%;
           margin: 0px auto;
-          margin-top: 100px;
+
       }
 
       .slick-slide {
@@ -293,6 +298,11 @@
       .card{
         box-shadow: 5px 1px 5px rgb(3, 35, 7), 4px 0px 10px rgb(15, 62, 1);
       }
+
+      .slick-jumbotron{
+          padding: 10px 10px;
+      }
+
     }
 
 
