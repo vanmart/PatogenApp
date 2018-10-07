@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'macro', to: 'home#macroMenu', as: :macro
   get 'menu' ,to: 'home#menu', as: :menu
   get 'reports', to: 'home#reports', as: :reports
+  get 'videoAppsco', to: 'home#videoAppsco', as: :videoAppsco
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
