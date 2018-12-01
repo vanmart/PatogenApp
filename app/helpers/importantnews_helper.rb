@@ -1,0 +1,2 @@
+module ImportantnewsHelper
+end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :promonewsmultims
+  resources :comments
+  resources :importantnews
+  resources :promotions
   resources :pathogens
   resources :diseases
   resources :taxonomic_tables

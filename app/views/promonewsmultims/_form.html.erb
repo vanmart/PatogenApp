@@ -1,0 +1,34 @@
+<%= form_for @promonewsmultim, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :promotion_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :promotion_id, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :multim_type, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :multim_type, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :importantnews_id, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :importantnews_id, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :reference, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :reference, class: 'text_field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  promonewsmultims_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

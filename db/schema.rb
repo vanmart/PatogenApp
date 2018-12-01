@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616232606) do
+ActiveRecord::Schema.define(version: 20181130215355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "importantnews_id"
+    t.text     "content"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "cultures", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +44,13 @@ ActiveRecord::Schema.define(version: 20180616232606) do
     t.text     "economic_damage"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "importantnews", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "multims", force: :cascade do |t|
@@ -107,6 +122,22 @@ ActiveRecord::Schema.define(version: 20180616232606) do
     t.integer  "taxonomic_table_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "promonewsmultims", force: :cascade do |t|
+    t.integer  "promotion_id"
+    t.integer  "multim_type"
+    t.integer  "importantnews_id"
+    t.string   "reference"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "roles", force: :cascade do |t|
