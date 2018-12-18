@@ -5,11 +5,47 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @promotion.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:Titulo) %></dt>
+        <dd><pre class="prettyprint"><%= @promotion.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:Description) %></dt>
       <dd><pre class="prettyprint"><%= @promotion.description %></pre></dd>
   </dl>
+</div>
+
+<div class="black-ground card text-center">
+  <div class="text-center ver-mas">
+    <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length == 1)%>
+        <div slick-slide slick-current slick-center >
+          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+          frameborder="0" allowfullscreen src="https://www.youtube.com/embed/QsCN1YOimdg?controls=0">
+          </iframe>
+        </div>
+    <% end %>
+    <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length >= 2)%>
+      <section class="videos slider">
+      <% @promotion.promonewsmultims.where(multim_type: "Video").each do |importantnews| %>
+        <div slick-slide slick-current slick-center >
+          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+          frameborder="0" allowfullscreen src="https://www.youtube.com/embed/QsCN1YOimdg?controls=1">
+          </iframe>
+        </div>
+      <%end%>
+      </section>
+    <% end%>
+
+    <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length == 1)%>
+      <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+            <%= image_tag(importantnews.reference, class: "")%>
+      <%end%>
+    <%end%>
+    <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length >= 2)%>
+      <section class="center slider">
+        <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+              <%= image_tag(importantnews.reference, class: "imagePromo")%>
+        <%end%>
+      </section>
+    <%end%>
+  </div>
 </div>
 
 <div class="form-group">
@@ -23,3 +59,117 @@
               data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
               class: 'btn btn-danger' %>
 </div>
+
+<script type="text/javascript">
+
+    $(function(){
+
+      $(".videos").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 1,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+      {
+        breakpoint: 1366,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 340,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      ],
+          slidesToScroll: 1
+      });
+
+      $(".center").slick({
+      dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 1,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+      {
+        breakpoint: 1366,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 340,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      ],
+          slidesToScroll: 1
+      });
+
+    });
+
+</script>

@@ -12,4 +12,5 @@
 
 class Comment < ApplicationRecord
   belongs_to :importantnews
+  belongs_to :user
 end

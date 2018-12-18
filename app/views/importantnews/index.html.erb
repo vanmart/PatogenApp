@@ -2,6 +2,103 @@
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<section class="center slider">
+
+<% if @importantnews %>
+<% @importantnews.each do |importantnews| %>
+      <div class="black-ground card text-center">
+        <div class="text-center ver-mas">
+          <div style="margin-bottom: 10px">
+            <h4><b><%= importantnews.name%> </b></h4>
+            <p class="hidePartOfText"><%= importantnews.description %></p>
+          </div>
+          <hr>
+          <div class="text-center">
+            <%= image_tag(importantnews.promonewsmultims.last.reference, class: "")%>
+          </div>
+          <hr>
+          <%= link_to importantnews_path(importantnews), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+            Ver más <i class="fa fa-eye" aria-hidden="true"></i><%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to importantnews_path(importantnews), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+
+          <%end%>
+        </div>
+      </div>
+
+<%end%>
+<%end%>
+
+</section>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+
+      $(".center").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+    {
+      breakpoint: 1366,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 340,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    ],
+        slidesToScroll: 1
+    });
+
+    });
+</script>
+
+
+
+
+
+
+
 <table class="table table-striped">
   <thead>
     <tr>

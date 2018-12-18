@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   get 'reports', to: 'home#reports', as: :reports
   get 'videoAppsco', to: 'home#videoAppsco', as: :videoAppsco
 
+  post 'createComment', to: 'comments#createComment', as: :createComment
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

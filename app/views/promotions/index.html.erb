@@ -2,39 +2,96 @@
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', default: t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @promotions.each do |promotion| %>
-      <tr>
-        <td><%= promotion.id %></td>
-          <td><%= promotion.name %></td>
-          <td><%= promotion.description %></td>
-        <td><%=l promotion.created_at, format: :long %></td>
-        <td>
-          <%= link_to promotion_path(promotion), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
-          <%= link_to edit_promotion_path(promotion), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to promotion_path(promotion), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_promotion_path,
-            class: 'btn btn-primary' %>
+<section class="center slider">
+
+<% @promotions.each do |promotion| %>
+      <div class="black-ground card text-center">
+        <div class="text-center ver-mas">
+          <div style="margin-bottom: 10px">
+            <h4><b><%= promotion.name%> </b></h4>
+            <p class="hidePartOfText"><%= promotion.description %></p>
+          </div>
+          <hr>
+          <div class="text-center">
+            <%= image_tag(promotion.promonewsmultims.last.reference, class: "")%>
+          </div>
+          <hr>
+          <%= link_to promotion_path(promotion), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+            Ver más <i class="fa fa-eye" aria-hidden="true"></i><%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to promotion_path(promotion), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+
+          <%end%>
+        </div>
+      </div>
+
+<%end%>
+
+</section>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+
+      $(".center").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+    {
+      breakpoint: 1366,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 340,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    ],
+        slidesToScroll: 1
+    });
+
+    });
+</script>
+
+
+
+
+

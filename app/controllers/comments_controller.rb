@@ -7,6 +7,25 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
+  def createComment
+
+    @comment = Comment.new
+    @comment.user_id = current_user.id
+    @comment.importantnews_id = params[:importantnews_id]
+    @comment.content = params[:comment]
+    @comment.save
+
+    respond_to do |format|
+      if @comment.save
+        format.json { render json: @comment.to_json  }
+        #response.json { render json: @comment.attributes.merge({ "username" => current_user.name})}
+      else
+        format.html { render 'new'} ## Specify the format in which you are rendering "new" page
+        format.json { render json: comment.errors } ## You might want to specify a json format as well
+      end
+    end
+  end
+
   # GET /comments/1
   # GET /comments/1.json
   def show
