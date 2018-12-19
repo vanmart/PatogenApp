@@ -15,7 +15,7 @@
           </div>
           <hr>
           <div class="text-center">
-            <%= image_tag(importantnews.promonewsmultims.last.reference, class: "")%>
+            <%= image_tag(importantnews.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
           </div>
           <hr>
           <%= link_to importantnews_path(importantnews), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
