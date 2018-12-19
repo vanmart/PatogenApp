@@ -17,11 +17,8 @@
             <%= image_tag(promotion.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
           </div>
           <hr>
-          <%= link_to promotion_path(promotion), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
-            Ver más <i class="fa fa-eye" aria-hidden="true"></i><%= glyph 'info-sign' %>
-          <%- end -%>
           <%= link_to promotion_path(promotion), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
-
+            <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i> </label>
           <%end%>
         </div>
       </div>
