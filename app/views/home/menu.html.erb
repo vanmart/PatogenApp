@@ -15,6 +15,38 @@
         <%end%>
       </div>
     </div>
+      <div class="black-ground card text-center">
+      <div class="text-center ver-mas">
+        <div style="margin-bottom: 10px">
+          <h4><b>Noticias</b></h4>
+          <p>Noticias de interes y ultimas actualizaciones.</p>
+        </div>
+        <hr>
+        <div class="text-center">
+          <%= image_tag("pathogen.png", class: "")%>
+        </div>
+        <hr>
+        <%= link_to importantnews_index_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+           Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+        <%end%>
+      </div>
+    </div>
+    <div class="black-ground card text-center">
+      <div class="text-center ver-mas">
+        <div style="margin-bottom: 10px">
+          <h4><b>Promociones y Publicidad</b></h4>
+          <p>Enterate de los ultimos productos y promociones.</p>
+        </div>
+        <hr>
+        <div class="text-center">
+          <%= image_tag("pathogen.png", class: "")%>
+        </div>
+        <hr>
+        <%= link_to promotions_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+           Ver más <i class="fa fa-eye" aria-hidden="true"></i>
+        <%end%>
+      </div>
+    </div>
     <div class="black-ground card text-center">
       <div class="text-center ver-mas">
         <div style="margin-bottom: 10px">
@@ -59,38 +91,6 @@
         </div>
         <hr>
         <%= link_to reports_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
-           Ver más <i class="fa fa-eye" aria-hidden="true"></i>
-        <%end%>
-      </div>
-    </div>
-    <div class="black-ground card text-center">
-      <div class="text-center ver-mas">
-        <div style="margin-bottom: 10px">
-          <h4><b>Noticias</b></h4>
-          <p>Noticias de interes y ultimas actualizaciones.</p>
-        </div>
-        <hr>
-        <div class="text-center">
-          <%= image_tag("pathogen.png", class: "")%>
-        </div>
-        <hr>
-        <%= link_to importantnews_index_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
-           Ver más <i class="fa fa-eye" aria-hidden="true"></i>
-        <%end%>
-      </div>
-    </div>
-    <div class="black-ground card text-center">
-      <div class="text-center ver-mas">
-        <div style="margin-bottom: 10px">
-          <h4><b>Promociones y Publicidad</b></h4>
-          <p>Enterate de los ultimos productos y promociones.</p>
-        </div>
-        <hr>
-        <div class="text-center">
-          <%= image_tag("pathogen.png", class: "")%>
-        </div>
-        <hr>
-        <%= link_to promotions_path, data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
            Ver más <i class="fa fa-eye" aria-hidden="true"></i>
         <%end%>
       </div>

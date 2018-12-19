@@ -12,7 +12,7 @@
 #
 
 class Pathogen < ApplicationRecord
-  has_many :multim
+  has_many :multims
   belongs_to :taxonomic_table
 
   has_many :pathogen_by_cultures
@@ -22,7 +22,7 @@ class Pathogen < ApplicationRecord
   has_many :diseases, through: :pathogen_by_diseases
 
   accepts_nested_attributes_for :taxonomic_table, :allow_destroy => true
-  accepts_nested_attributes_for :multim, :allow_destroy => true
+  accepts_nested_attributes_for :multims, :allow_destroy => true
 
   rails_admin do
 

@@ -11,7 +11,7 @@
 #
 
 class Disease < ApplicationRecord
-  has_many :multim
+  has_many :multims
 
   has_many :pathogen_by_diseases
   has_many :pathogens, through: :pathogen_by_diseases
@@ -19,7 +19,7 @@ class Disease < ApplicationRecord
   has_many :disease_by_cultures
   has_many :cultures, through: :disease_by_cultures
 
-  accepts_nested_attributes_for :multim, :allow_destroy => true
+  accepts_nested_attributes_for :multims, :allow_destroy => true
   #accepts_nested_attributes_for :pathogens, :allow_destroy => true
   #accepts_nested_attributes_for :cultures, :allow_destroy => true
 
