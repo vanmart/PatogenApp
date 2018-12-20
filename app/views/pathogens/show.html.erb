@@ -31,55 +31,74 @@
           <dd><pre class="prettyprint"><%= @pathogen.taxonomic_table.species %></pre></dd>
         </dl>
         </div>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:diseases) %></dt>
-      <dd>
-        <div class="btn-group" role="group">
-          <% @pathogen.diseases.each do |disease|%>
+
+      <% if @pathogen.diseases.length >= 1 %>
+        <dt class="label label-default"><%= model_class.human_attribute_name(:diseases) %></dt>
+        <dd>
+          <div class="btn-group" role="group">
+            <% @pathogen.diseases.each do |disease|%>
               <%= link_to disease_path(disease), data: { turbolinks: false }, class: "btn btn-default" do %>
                 <label><%= disease.name %></label>
               <%end%>
-          <%end%>
-        </div>
-      </dd>
+            <%end%>
+          </div>
+        </dd>
+      <%end%>
+
+      <% if @pathogen.cultures.length >= 1 %>
+        <dt class="label label-default"><%= model_class.human_attribute_name(:cultures) %></dt>
+        <dd>
+          <div class="btn-group" role="group">
+            <% @pathogen.cultures.each do |culture|%>
+                <%= link_to culture_path(culture), data: { turbolinks: false }, class: "btn btn-default" do %>
+                  <label><%= culture.name %></label>
+                <%end%>
+            <%end%>
+          </div>
+        </dd>
+      <%end%>
   </dl>
 </div>
 
 <div class="container">
-<div class="black-ground card text-center">
-  <div class="text-center ver-mas">
-    <%if (@pathogen.multims.where(multim_type: "Video").length != 0) and (@pathogen.multims.where(multim_type: "Video").length == 1)%>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+@pathogen.multims.where(multim_type: "Video").last.link+"?controls=1" %> >
-          </iframe>
-        </div>
-    <% end %>
-    <%if (@pathogen.multims.where(multim_type: "Video").length != 0) and (@pathogen.multims.where(multim_type: "Video").length >= 2)%>
-      <section class="videos slider">
-      <% @pathogen.multims.where(multim_type: "Video").each do |multim| %>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multims.link+"?controls=1" %> >
-          </iframe>
-        </div>
-      <%end%>
-      </section>
-    <% end%>
-    <%if (@pathogen.multims.where(multim_type: "Imagen").length != 0) and (@pathogen.multims.where(multim_type: "Imagen").length == 1)%>
-      <% @pathogen.multims.where(multim_type: "Imagen").each do |multim| %>
-            <%= image_tag(multim.link, class: "")%>
-      <%end%>
-    <%end%>
-    <%if (@pathogen.multims.where(multim_type: "Imagen").length != 0) and (@pathogen.multims.where(multim_type: "Imagen").length >= 2)%>
-      <section class="center slider">
-        <% @pathogen.multims.where(multim_type: "Imagen").each do |multim| %>
-              <%= image_tag(multim.link, class: "imagePromo")%>
+  <div class="black-ground card text-center">
+      <div class="text-center ver-mas">
+        <% if @pathogen.multims.where(multim_type: "Video").length >= 1 %>
+          <%if (@pathogen.multims.where(multim_type: "Video").length != 0) and (@pathogen.multims.where(multim_type: "Video").length == 1)%>
+              <div slick-slide slick-current slick-center >
+                <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+                frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+@pathogen.multims.where(multim_type: "Video").last.link+"?controls=1" %> >
+                </iframe>
+              </div>
+          <% end %>
+          <%if (@pathogen.multims.where(multim_type: "Video").length != 0) and (@pathogen.multims.where(multim_type: "Video").length >= 2)%>
+            <section class="videos slider">
+              <% @pathogen.multims.where(multim_type: "Video").each do |multim| %>
+                <div slick-slide slick-current slick-center >
+                  <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+                  frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multim.link+"?controls=1" %> >
+                  </iframe>
+                </div>
+              <%end%>
+            </section>
+          <% end%>
         <%end%>
-      </section>
-    <%end%>
+        <% if @pathogen.multims.where(multim_type: "Imagen").length >= 1 %>
+          <%if (@pathogen.multims.where(multim_type: "Imagen").length != 0) and (@pathogen.multims.where(multim_type: "Imagen").length == 1)%>
+            <% @pathogen.multims.where(multim_type: "Imagen").each do |multim| %>
+                  <%= image_tag(multim.link, class: "")%>
+            <%end%>
+          <%end%>
+          <%if (@pathogen.multims.where(multim_type: "Imagen").length != 0) and (@pathogen.multims.where(multim_type: "Imagen").length >= 2)%>
+            <section class="center slider">
+              <% @pathogen.multims.where(multim_type: "Imagen").each do |multim| %>
+                    <%= image_tag(multim.link, class: "imagePromo")%>
+              <%end%>
+            </section>
+          <%end%>
+        <%end%>
+      </div>
   </div>
-</div>
-
 </div>
 
 <script type="text/javascript">

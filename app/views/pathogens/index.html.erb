@@ -4,24 +4,27 @@
 </div>
 
 <section class="center slider">
-
-  <% @pathogens.each do |pathogen| %>
-      <div class="black-ground card text-center">
-        <div class="text-center ver-mas">
-          <div style="margin-bottom: 10px">
-            <h4><b><%= pathogen.name%> </b></h4>
-            <p class="hidePartOfText"><%= pathogen.description %></p>
+  <% if @pathogens %>
+    <% @pathogens.each do |pathogen| %>
+        <div class="black-ground card text-center">
+          <div class="text-center ver-mas">
+            <div style="margin-bottom: 10px">
+              <h4><b><%= pathogen.name%> </b></h4>
+              <p class="hidePartOfText"><%= pathogen.description %></p>
+            </div>
+            <hr>
+            <% if pathogen.multims.where(multim_type: "Imagen").length >= 1 %>
+              <div class="text-center">
+                <%= image_tag(pathogen.multims.where(multim_type: "Imagen").last.link, class: "")%>
+              </div>
+            <%end%>
+            <hr>
+            <%= link_to pathogen_path(pathogen), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+              <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i> </label>
+            <%end%>
           </div>
-          <hr>
-          <div class="text-center">
-            <%= image_tag(pathogen.multims.where(multim_type: "Imagen").last.link, class: "")%>
-          </div>
-          <hr>
-          <%= link_to pathogen_path(pathogen), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
-            <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i> </label>
-          <%end%>
         </div>
-      </div>
+    <%end%>
   <%end%>
 
 </section>

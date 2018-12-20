@@ -11,166 +11,184 @@
       <dd><pre class="prettyprint"><%= @disease.symptom %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:economic_damage) %></dt>
       <dd><pre class="prettyprint"><%= @disease.economic_damage %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:pathogens) %></dt>
-      <dd>
-        <div class="btn-group" role="group">
-          <% @disease.pathogens.each do |pathogen|%>
-              <%= link_to pathogen_path(pathogen), data: { turbolinks: false }, class: "btn btn-default" do %>
-                <label><%= pathogen.name %></label>
-              <%end%>
-          <%end%>
-        </div>
-      </dd>
+        <% if @disease.pathogens.length >=1 %>
+          <dt class="label label-default"><%= model_class.human_attribute_name(:pathogens) %></dt>
+          <dd>
+          <div class="btn-group" role="group">
+            <% @disease.pathogens.each do |pathogen|%>
+                <%= link_to pathogen_path(pathogen), data: { turbolinks: false }, class: "btn btn-default" do %>
+                  <label><%= pathogen.name %></label>
+                <%end%>
+            <%end%>
+          </div>
+          </dd>
+        <%end%>
+        <% if @disease.cultures.length >=1 %>
+          <dt class="label label-default"><%= model_class.human_attribute_name(:cultures) %></dt>
+          <dd>
+          <div class="btn-group" role="group">
+            <% @disease.cultures.each do |culture|%>
+                <%= link_to culture_path(culture), data: { turbolinks: false }, class: "btn btn-default" do %>
+                  <label><%= culture.name %></label>
+                <%end%>
+            <%end%>
+          </div>
+          </dd>
+        <%end%>
   </dl>
 </div>
 
-<div class="container">
-<div class="black-ground card text-center">
-  <div class="text-center ver-mas">
-    <%if (@disease.multims.where(multim_type: "Video").length != 0) and (@disease.multims.where(multim_type: "Video").length == 1)%>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+@disease.multims.where(multim_type: "Video").last.link+"?controls=1" %> >
-          </iframe>
-        </div>
-    <% end %>
-    <%if (@disease.multims.where(multim_type: "Video").length != 0) and (@disease.multims.where(multim_type: "Video").length >= 2)%>
-      <section class="videos slider">
-      <% @disease.multims.where(multim_type: "Video").each do |multim| %>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multims.link+"?controls=1" %> >
-          </iframe>
-        </div>
-      <%end%>
-      </section>
-    <% end%>
-    <%if (@disease.multims.where(multim_type: "Imagen").length != 0) and (@disease.multims.where(multim_type: "Imagen").length == 1)%>
-      <% @disease.multims.where(multim_type: "Imagen").each do |multim| %>
-            <%= image_tag(multim.link, class: "")%>
-      <%end%>
-    <%end%>
-    <%if (@disease.multims.where(multim_type: "Imagen").length != 0) and (@disease.multims.where(multim_type: "Imagen").length >= 2)%>
-      <section class="center slider">
-        <% @disease.multims.where(multim_type: "Imagen").each do |multim| %>
-              <%= image_tag(multim.link, class: "imagePromo")%>
+  <div class="container">
+  <div class="black-ground card text-center">
+    <div class="text-center ver-mas">
+      <%if (@disease.multims.where(multim_type: "Video").length >= 1) %>
+        <%if (@disease.multims.where(multim_type: "Video").length != 0) and (@disease.multims.where(multim_type: "Video").length == 1)%>
+            <div slick-slide slick-current slick-center >
+              <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+              frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+@disease.multims.where(multim_type: "Video").last.link+"?controls=1" %> >
+              </iframe>
+            </div>
+        <% end %>
+        <%if (@disease.multims.where(multim_type: "Video").length != 0) and (@disease.multims.where(multim_type: "Video").length >= 2)%>
+          <section class="videos slider">
+          <% @disease.multims.where(multim_type: "Video").each do |multim| %>
+            <div slick-slide slick-current slick-center >
+              <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+              frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multim.link+"?controls=1" %> >
+              </iframe>
+            </div>
+          <%end%>
+          </section>
+        <% end%>
+      <% end%>
+      <%if (@disease.multims.where(multim_type: "Imagen").length >= 1) %>
+        <%if (@disease.multims.where(multim_type: "Imagen").length != 0) and (@disease.multims.where(multim_type: "Imagen").length == 1)%>
+          <% @disease.multims.where(multim_type: "Imagen").each do |multim| %>
+                <%= image_tag(multim.link, class: "")%>
+          <%end%>
         <%end%>
-      </section>
-    <%end%>
+        <%if (@disease.multims.where(multim_type: "Imagen").length != 0) and (@disease.multims.where(multim_type: "Imagen").length >= 2)%>
+          <section class="center slider">
+            <% @disease.multims.where(multim_type: "Imagen").each do |multim| %>
+                  <%= image_tag(multim.link, class: "imagePromo")%>
+            <%end%>
+          </section>
+        <%end%>
+      <%end%>
+    </div>
   </div>
-</div>
 
-</div>
+  </div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  $(function(){
+    $(function(){
 
-      $(".videos").slick({
+        $(".videos").slick({
+          dots: false,
+          infinite: true,
+          centerMode: true,
+          slidesToShow: 1,
+          arrows:true,
+          touchMove: true,
+           focusOnSelect: true,
+
+          responsive: [
+        {
+          breakpoint: 1366,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 340,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        ],
+            slidesToScroll: 1
+        });
+
+        $(".center").slick({
         dots: false,
-        infinite: true,
-        centerMode: true,
-        slidesToShow: 1,
-        arrows:true,
-        touchMove: true,
-         focusOnSelect: true,
+          infinite: true,
+          centerMode: true,
+          slidesToShow: 1,
+          arrows:true,
+          touchMove: true,
+           focusOnSelect: true,
 
-        responsive: [
-      {
-        breakpoint: 1366,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
+          responsive: [
+        {
+          breakpoint: 1366,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 340,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
         }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 340,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      ],
-          slidesToScroll: 1
+        ],
+            slidesToScroll: 1
+        });
+
       });
-
-      $(".center").slick({
-      dots: false,
-        infinite: true,
-        centerMode: true,
-        slidesToShow: 1,
-        arrows:true,
-        touchMove: true,
-         focusOnSelect: true,
-
-        responsive: [
-      {
-        breakpoint: 1366,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 340,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      ],
-          slidesToScroll: 1
-      });
-
-    });
-</script>
+  </script>

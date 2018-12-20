@@ -4,25 +4,27 @@
 </div>
 
 <section class="center slider">
-
-<% @promotions.each do |promotion| %>
-      <div class="black-ground card text-center">
-        <div class="text-center ver-mas">
-          <div style="margin-bottom: 10px">
-            <h4><b><%= promotion.name%> </b></h4>
-            <p class="hidePartOfText"><%= promotion.description %></p>
+<% if @promotions %>
+  <% @promotions.each do |promotion| %>
+        <div class="black-ground card text-center">
+          <div class="text-center ver-mas">
+            <div style="margin-bottom: 10px">
+              <h4><b><%= promotion.name%> </b></h4>
+              <p class="hidePartOfText"><%= promotion.description %></p>
+            </div>
+            <hr>
+            <% if promotion.promonewsmultims.where(multim_type: "Imagen").length >= 1 %>
+              <div class="text-center">
+                <%= image_tag(promotion.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
+              </div>
+            <%end%>
+            <hr>
+            <%= link_to promotion_path(promotion), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+              <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i> </label>
+            <%end%>
           </div>
-          <hr>
-          <div class="text-center">
-            <%= image_tag(promotion.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
-          </div>
-          <hr>
-          <%= link_to promotion_path(promotion), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
-            <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i> </label>
-          <%end%>
         </div>
-      </div>
-
+  <%end%>
 <%end%>
 
 </section>

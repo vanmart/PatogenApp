@@ -15,36 +15,39 @@
 <div class="container">
 <div class="black-ground card text-center">
   <div class="text-center ver-mas">
-    <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length == 1)%>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+ @promotion.promonewsmultims.where(multim_type: "Video").last.reference+"?controls=1" %> >
-          </iframe>
-        </div>
-    <% end %>
-    <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length >= 2)%>
-      <section class="videos slider">
-      <% @promotion.promonewsmultims.where(multim_type: "Video").each do |multim| %>
-        <div slick-slide slick-current slick-center >
-          <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
-          frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multim.reference+"?controls=1" %> >
-          </iframe>
-        </div>
-      <%end%>
-      </section>
-    <% end%>
-
-    <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length == 1)%>
-      <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
-            <%= image_tag(importantnews.reference, class: "")%>
-      <%end%>
-    <%end%>
-    <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length >= 2)%>
-      <section class="center slider">
-        <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
-              <%= image_tag(importantnews.reference, class: "imagePromo")%>
+    <%if (@promotion.promonewsmultims.where(multim_type: "Video").length >= 0) %>
+      <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length == 1)%>
+          <div slick-slide slick-current slick-center >
+            <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+            frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+ @promotion.promonewsmultims.where(multim_type: "Video").last.reference+"?controls=1" %> >
+            </iframe>
+          </div>
+      <% end %>
+      <%if (@promotion.promonewsmultims.where(multim_type: "Video").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Video").length >= 2)%>
+        <section class="videos slider">
+        <% @promotion.promonewsmultims.where(multim_type: "Video").each do |multim| %>
+          <div slick-slide slick-current slick-center >
+            <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+            frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multim.reference+"?controls=1" %> >
+            </iframe>
+          </div>
         <%end%>
-      </section>
+        </section>
+      <% end%>
+    <% end%>
+    <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) %>
+      <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length == 1)%>
+        <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+              <%= image_tag(importantnews.reference, class: "")%>
+        <%end%>
+      <%end%>
+      <%if (@promotion.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@promotion.promonewsmultims.where(multim_type: "Imagen").length >= 2)%>
+        <section class="center slider">
+          <% @promotion.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+                <%= image_tag(importantnews.reference, class: "imagePromo")%>
+          <%end%>
+        </section>
+      <%end%>
     <%end%>
   </div>
 </div>

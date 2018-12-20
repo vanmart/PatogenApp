@@ -14,9 +14,11 @@
               <p class="hidePartOfText"><%= importantnews.description %></p>
             </div>
             <hr>
-            <div class="text-center">
-              <%= image_tag(importantnews.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
-            </div>
+            <% if importantnews.promonewsmultims.where(multim_type: "Imagen").length >= 1 %>
+              <div class="text-center">
+                <%= image_tag(importantnews.promonewsmultims.where(multim_type: "Imagen").last.reference, class: "")%>
+              </div>
+            <%end%>
             <hr>
             <%= link_to importantnews_path(importantnews), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
               <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i></label>

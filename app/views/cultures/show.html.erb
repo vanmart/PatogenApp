@@ -5,23 +5,189 @@
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @culture.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:scientific_name) %></dt>
-      <dd><pre class="prettyprint"><%= @culture.scientific_name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
-      <dd><pre class="prettyprint"><%= @culture.description %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+    <dd><pre class="prettyprint"><%= @culture.name %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:scientific_name) %></dt>
+    <dd><pre class="prettyprint"><%= @culture.scientific_name %></pre></dd>
+    <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+    <dd><pre class="prettyprint"><%= @culture.description %></pre></dd>
+    <% if @culture.pathogens.length >=1 %>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pathogens) %></dt>
+      <dd>
+      <div class="btn-group" role="group">
+        <% @culture.pathogens.each do |pathogen|%>
+            <%= link_to pathogen_path(pathogen), data: { turbolinks: false }, class: "btn btn-default" do %>
+              <label><%= pathogen.name %></label>
+            <%end%>
+        <%end%>
+      </div>
+      </dd>
+    <%end%>
+    <% if @culture.diseases.length >=1 %>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:diseases) %></dt>
+      <dd>
+      <div class="btn-group" role="group">
+        <% @culture.diseases.each do |disease|%>
+            <%= link_to disease_path(disease), data: { turbolinks: false }, class: "btn btn-default" do %>
+              <label><%= disease.name %></label>
+            <%end%>
+        <%end%>
+      </div>
+      </dd>
+    <%end%>
   </dl>
 </div>
 
-<div class="form-group">
-  <%= link_to t('.back', default: t("helpers.links.back")),
-              cultures_path, class: 'btn btn-default'  %>
-  <%= link_to t('.edit', default: t("helpers.links.edit")),
-              edit_culture_path(@culture), class: 'btn btn-default' %>
-  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-              culture_path(@culture),
-              method: 'delete',
-              data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
-              class: 'btn btn-danger' %>
+<div class="container">
+  <div class="black-ground card text-center">
+    <div class="text-center ver-mas">
+      <% if @culture.multims.where(multim_type: "Video").length >= 1 %>
+        <%if (@culture.multims.where(multim_type: "Video").length != 0) and (@culture.multims.where(multim_type: "Video").length == 1)%>
+            <div slick-slide slick-current slick-center >
+              <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+              frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+@culture.multims.where(multim_type: "Video").last.link+"?controls=1" %> >
+              </iframe>
+            </div>
+        <% end %>
+        <%if (@culture.multims.where(multim_type: "Video").length != 0) and (@culture.multims.where(multim_type: "Video").length >= 2)%>
+          <section class="videos slider">
+          <% @culture.multims.where(multim_type: "Video").each do |multim| %>
+            <div slick-slide slick-current slick-center >
+              <iframe class="video_groups" frameborder="0" allowfullscreen width="100%" height="420"
+              frameborder="0" allowfullscreen src=<%= "https://www.youtube.com/embed/"+multim.link+"?controls=1" %> >
+              </iframe>
+            </div>
+          <%end%>
+          </section>
+        <% end%>
+      <%end%>
+      <% if @culture.multims.where(multim_type: "Imagen").length >= 1 %>
+        <%if (@culture.multims.where(multim_type: "Imagen").length != 0) and (@culture.multims.where(multim_type: "Imagen").length == 1)%>
+          <% @culture.multims.where(multim_type: "Imagen").each do |multim| %>
+                <%= image_tag(multim.link, class: "")%>
+          <%end%>
+        <%end%>
+        <%if (@culture.multims.where(multim_type: "Imagen").length != 0) and (@culture.multims.where(multim_type: "Imagen").length >= 2)%>
+          <section class="center slider">
+            <% @culture.multims.where(multim_type: "Imagen").each do |multim| %>
+                  <%= image_tag(multim.link, class: "imagePromo")%>
+            <%end%>
+          </section>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
 </div>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+        $(".videos").slick({
+          dots: false,
+          infinite: true,
+          centerMode: true,
+          slidesToShow: 1,
+          arrows:true,
+          touchMove: true,
+           focusOnSelect: true,
+
+          responsive: [
+        {
+          breakpoint: 1366,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 340,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        ],
+            slidesToScroll: 1
+        });
+
+        $(".center").slick({
+        dots: false,
+          infinite: true,
+          centerMode: true,
+          slidesToShow: 1,
+          arrows:true,
+          touchMove: true,
+           focusOnSelect: true,
+
+          responsive: [
+        {
+          breakpoint: 1366,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 340,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        ],
+            slidesToScroll: 1
+        });
+
+      });
+  </script>

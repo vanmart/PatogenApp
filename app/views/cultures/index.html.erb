@@ -2,6 +2,98 @@
 <div class="page-header">
   <h1><%=t '.title', default: model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<section class="center slider">
+
+<% if @cultures %>
+  <% @cultures.each do |culture| %>
+        <div class="black-ground card text-center">
+          <div class="text-center ver-mas">
+            <div style="margin-bottom: 10px">
+              <h4><b><%= culture.name%> <span>(<%= culture.scientific_name%>)</span> </b></h4>
+              <p class="hidePartOfText"><%= culture.description %></p>
+            </div>
+            <hr>
+            <% if culture.multims.where(multim_type: "Imagen").length >= 1 %>
+              <div class="text-center">
+                <%= image_tag(culture.multims.where(multim_type: "Imagen").last.link, class: "")%>
+              </div>
+            <%end%>
+            <hr>
+            <%= link_to culture_path(culture), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
+              <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i></label>
+            <%end%>
+
+          </div>
+        </div>
+  <%end%>
+<%end%>
+
+</section>
+
+  <script type="text/javascript">
+
+    $(function(){
+
+
+      $(".center").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 3,
+        arrows:true,
+        touchMove: true,
+         focusOnSelect: true,
+
+        responsive: [
+    {
+      breakpoint: 1366,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 340,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    ],
+        slidesToScroll: 1
+    });
+
+    });
+</script>
+
+
+
 <table class="table table-striped" id="cultures-table" style="background-color: rgba(0, 0, 0, 0.5);width: 100%;" >
   <thead>
     <tr>

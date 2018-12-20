@@ -15,9 +15,11 @@
               <p class="hidePartOfText"><%= disease.symptom %></p>
             </div>
             <hr>
-            <div class="text-center">
-              <%= image_tag(disease.multims.where(multim_type: "Imagen").last.link, class: "")%>
-            </div>
+            <% if culture.multims.where(multim_type: "Imagen").length >= 1 %>
+              <div class="text-center">
+                <%= image_tag(culture.multims.where(multim_type: "Imagen").last.link, class: "")%>
+              </div>
+            <%end%>
             <hr>
             <%= link_to disease_path(disease), data: { turbolinks: false }, class: "btn btn-default btn-ver-mas" do %>
               <label>Ver más <i class="fa fa-eye" aria-hidden="true"></i></label>
@@ -93,3 +95,84 @@
 
 
 
+
+
+
+
+
+
+<table class="table table-striped" id="diseases-table" style="background-color: rgba(0, 0, 0, 0.5);width: 100%;">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:symptom) %></th>
+      <th><%= model_class.human_attribute_name(:economic_damage) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', default: t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @diseases.each do |disease| %>
+      <tr>
+        <td><%= disease.id %></td>
+          <td><%= disease.name %></td>
+          <td><%= disease.symptom %></td>
+          <td><%= disease.economic_damage %></td>
+        <td><%=l disease.created_at, format: :long %></td>
+        <td>
+          <%= link_to disease_path(disease), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+          <%- end -%>
+          <%= link_to edit_disease_path(disease), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to disease_path(disease), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")),
+            new_disease_path,
+            class: 'btn btn-primary' %>
+
+<script type="text/javascript">
+  $(function(){
+      $('#diseases-table').DataTable({
+        "responsive": true,
+        "pageLength": 10,
+            "language":{
+              "sProcessing":     "Procesando...",
+              "sLengthMenu":     "Mostrar _MENU_ registros",
+              "sZeroRecords":    "No se encontraron resultados",
+              "sEmptyTable":     "Ningún dato disponible en esta tabla",
+              "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+              "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+              "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+              "sInfoPostFix":    "",
+              "sSearch":         "Buscar:",
+              "sUrl":            "",
+              "sInfoThousands":  ",",
+              "sLoadingRecords": "Cargando...",
+              "oPaginate": {
+                  "sFirst":    "Primero",
+                  "sLast":     "Último",
+                  "sNext":     "Siguiente",
+                  "sPrevious": "Anterior"
+              },
+              "oAria": {
+                  "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                  "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+              }
+            }
+      });
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  document.addEventListener("turbolinks:before-cache", function() {
+            dataTable.destroy();
+          });
+</script>
