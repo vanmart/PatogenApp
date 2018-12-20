@@ -6,7 +6,7 @@
 
 <section class="center slider">
 
-<% if @diseases.length >= 1 %>
+<% if @diseases %>
   <% @diseases.each do |disease| %>
         <div class="black-ground card text-center">
           <div class="text-center ver-mas">
@@ -15,9 +15,9 @@
               <p class="hidePartOfText"><%= disease.symptom %></p>
             </div>
             <hr>
-            <% if culture.multims.where(multim_type: "Imagen").length >= 1 %>
+            <% if disease.multims.where(multim_type: "Imagen").length >= 1 %>
               <div class="text-center">
-                <%= image_tag(culture.multims.where(multim_type: "Imagen").last.link, class: "")%>
+                <%= image_tag(disease.multims.where(multim_type: "Imagen").last.link, class: "")%>
               </div>
             <%end%>
             <hr>
