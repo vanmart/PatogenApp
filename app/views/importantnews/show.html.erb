@@ -3,6 +3,29 @@
   <h1><%=t '.title', default: model_class.model_name.human.titleize %></h1>
 </div>
 
+<div class="container">
+  <div class="black-ground card text-center">
+      <div class="text-center ver-mas">
+        <div slick-slide slick-current slick-center >
+          <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length >= 0) %>
+            <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@importantnews.promonewsmultims.where(multim_type: "Imagen").length == 1)%>
+              <% @importantnews.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+                    <%= image_tag(importantnews.reference, class: "")%>
+              <%end%>
+            <%end%>
+            <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@importantnews.promonewsmultims.where(multim_type: "Imagen").length >= 2)%>
+              <section class="center slider">
+                <% @importantnews.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
+                      <%= image_tag(importantnews.reference, class: "imagePromo")%>
+                <%end%>
+              </section>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+  </div>
+</div>
+
 <div class="fieldset">
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
@@ -35,20 +58,7 @@
         </section>
       <% end%>
     <% end%>
-    <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length >= 0) %>
-      <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@importantnews.promonewsmultims.where(multim_type: "Imagen").length == 1)%>
-        <% @importantnews.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
-              <%= image_tag(importantnews.reference, class: "")%>
-        <%end%>
-      <%end%>
-      <%if (@importantnews.promonewsmultims.where(multim_type: "Imagen").length != 0) and (@importantnews.promonewsmultims.where(multim_type: "Imagen").length >= 2)%>
-        <section class="center slider">
-          <% @importantnews.promonewsmultims.where(multim_type: "Imagen").each do |importantnews| %>
-                <%= image_tag(importantnews.reference, class: "imagePromo")%>
-          <%end%>
-        </section>
-      <%end%>
-    <%end%>
+
   </div>
 </div>
 
