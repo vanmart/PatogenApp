@@ -21,6 +21,9 @@
 
 class User < ApplicationRecord
   has_many :comments
+  has_many :outbreak_reports
+
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

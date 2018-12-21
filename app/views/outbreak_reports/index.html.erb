@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Outbreak Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Report type</th>
+      <th>Content</th>
+      <th>Imagen</th>
+      <th>Audio</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Altitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outbreak_reports.each do |outbreak_report| %>
+      <tr>
+        <td><%= outbreak_report.user_id %></td>
+        <td><%= outbreak_report.report_type %></td>
+        <td><%= outbreak_report.content %></td>
+        <td><%= outbreak_report.imagen %></td>
+        <td><%= outbreak_report.audio %></td>
+        <td><%= outbreak_report.latitude %></td>
+        <td><%= outbreak_report.longitude %></td>
+        <td><%= outbreak_report.altitude %></td>
+        <td><%= link_to 'Show', outbreak_report %></td>
+        <td><%= link_to 'Edit', edit_outbreak_report_path(outbreak_report) %></td>
+        <td><%= link_to 'Destroy', outbreak_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outbreak Report', new_outbreak_report_path %>

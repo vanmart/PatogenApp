@@ -1,0 +1,2 @@
+module OutbreakReportsHelper
+end

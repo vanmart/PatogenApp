@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :outbreak_reports
+  #resources :reports
   resources :promonewsmultims
   resources :comments
   resources :importantnews

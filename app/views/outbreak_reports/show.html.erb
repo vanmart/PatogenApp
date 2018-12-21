@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @outbreak_report.user_id %>
+</p>
+
+<p>
+  <strong>Report type:</strong>
+  <%= @outbreak_report.report_type %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @outbreak_report.content %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= @outbreak_report.imagen %>
+</p>
+
+<p>
+  <strong>Audio:</strong>
+  <%= @outbreak_report.audio %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @outbreak_report.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @outbreak_report.longitude %>
+</p>
+
+<p>
+  <strong>Altitude:</strong>
+  <%= @outbreak_report.altitude %>
+</p>
+
+<%= link_to 'Edit', edit_outbreak_report_path(@outbreak_report) %> |
+<%= link_to 'Back', outbreak_reports_path %>

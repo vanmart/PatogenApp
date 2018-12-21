@@ -1,0 +1,57 @@
+<%= form_for(outbreak_report) do |f| %>
+  <% if outbreak_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outbreak_report.errors.count, "error") %> prohibited this outbreak_report from being saved:</h2>
+
+      <ul>
+      <% outbreak_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :report_type %>
+    <%= f.number_field :report_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :imagen %>
+    <%= f.text_field :imagen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :audio %>
+    <%= f.text_field :audio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= f.label :altitude %>
+    <%= f.text_field :altitude %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181214193252) do
+ActiveRecord::Schema.define(version: 20181221004605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,19 @@ ActiveRecord::Schema.define(version: 20181214193252) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+  end
+
+  create_table "outbreak_reports", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "report_type"
+    t.text     "content"
+    t.string   "imagen"
+    t.string   "audio"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "altitude"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "pathogen_by_cultures", force: :cascade do |t|

@@ -8,6 +8,7 @@ module APINAME
       mount APINAME::V1::Diseases
       mount APINAME::V1::Pathogens
       mount APINAME::V1::Sessions
+      mount APINAME::V1::OutbreakReports
 
       #mount API::V1::Authors
     end

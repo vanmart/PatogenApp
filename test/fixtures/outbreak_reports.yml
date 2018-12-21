@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: outbreak_reports
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  report_type :integer
+#  content     :text
+#  imagen      :string
+#  audio       :string
+#  latitude    :float
+#  longitude   :float
+#  altitude    :float
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  report_type: 1
+  content: MyText
+  imagen: MyString
+  audio: MyString
+  latitude: 1.5
+  longitude: 1.5
+  altitude: 1.5
+
+two:
+  user_id: 1
+  report_type: 1
+  content: MyText
+  imagen: MyString
+  audio: MyString
+  latitude: 1.5
+  longitude: 1.5
+  altitude: 1.5
