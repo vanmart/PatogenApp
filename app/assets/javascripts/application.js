@@ -17,5 +17,7 @@
 //= require bootstrap-datetimepicker
 //= require toastr
 //= require owlcarousel2/owl.carousel
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .

@@ -5,6 +5,31 @@ class OutbreakReportsController < ApplicationController
   # GET /outbreak_reports.json
   def index
     @outbreak_reports = OutbreakReport.all
+    @hash = Gmaps4rails.build_markers(@outbreak_reports) do |outbreak_reports, marker|
+        marker.lat outbreak_reports.latitude
+        marker.lng outbreak_reports.longitude
+        if outbreak_reports.report_type == "Solo_Reporte"
+          marker.picture({
+              "url" => ActionController::Base.helpers.asset_path("markers/courrier-32.png"),
+              "width" => 32,
+              "height" => 32
+            })
+        else
+          marker.picture({
+              "url" => ActionController::Base.helpers.asset_path("patogenapp_brand.png"),
+              "width" => 32,
+              "height" => 32
+            })
+        end
+
+        marker.infowindow " <div class='col-md-12'>
+                              <img class='logo-infowindow' src='#{ActionController::Base.helpers.asset_path("patogenapp_brand.png")}'><br>
+                              <strong>Motivo del reporte: #{outbreak_reports.content}</strong><br>
+                            </div>
+                            <hr>
+                            Lo logramos!
+                          "
+     end
   end
 
   # GET /outbreak_reports/1

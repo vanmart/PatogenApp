@@ -1,0 +1,62 @@
+<div class="text-center backg">
+  <div id="map" style='width: 100%; height: 400px;' alt="no javascript"></div>
+</div>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+  intializeMap();
+});
+
+function intializeMap(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {streetViewControl: true}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+      handler.getMap().setZoom(14);
+      var infoWindow = new google.maps.InfoWindow(
+      {
+        size: new google.maps.Size(150,50)
+      });
+
+      if (navigator.geolocation) {
+          var options = {
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0
+              };
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var  lat  = position.coords.latitude;
+            var  lng =  position.coords.longitude;
+            var  myLocation =   new google.maps.LatLng(lat, lng);
+
+            handler.addMarkers([{"lat":myLocation.lat(),"lng":myLocation.lng()}])
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('Location found.');
+            handler.map.centerOn({lat: myLocation.lat(), lng: myLocation.lng()});
+            //map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, handler.getMap().getCenter());
+          },options);
+        }
+        else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, handler.getMap.getCenter());
+        }
+
+    });
+
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+
+
+
+ </script>

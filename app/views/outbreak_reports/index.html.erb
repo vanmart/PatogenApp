@@ -2,7 +2,80 @@
 
 <h1>Outbreak Reports</h1>
 
-<table>
+<section id="mapRow" >
+  <div class="row" style="margin-bottom: 10px" >
+    <div class="text-center col-md-12 align-middle" style="margin-bottom: 10px">
+      <div class="text-center backg">
+  <div id="map" style='width: 100%; height: 400px;' alt="no javascript"></div>
+</div>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+  intializeMap();
+});
+
+function intializeMap(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {streetViewControl: true}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+      handler.getMap().setZoom(14);
+      var infoWindow = new google.maps.InfoWindow(
+      {
+        size: new google.maps.Size(150,50)
+      });
+
+      if (navigator.geolocation) {
+          var options = {
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0
+              };
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var  lat  = position.coords.latitude;
+            var  lng =  position.coords.longitude;
+            var  myLocation =   new google.maps.LatLng(lat, lng);
+
+            handler.addMarkers([{"lat":myLocation.lat(),"lng":myLocation.lng()}])
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('Location found.');
+            handler.map.centerOn({lat: myLocation.lat(), lng: myLocation.lng()});
+            //map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, handler.getMap().getCenter());
+          },options);
+        }
+        else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, handler.getMap.getCenter());
+        }
+
+    });
+
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+
+
+
+ </script>
+      <p></p>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="container">
+<table class="table table-striped responsive"  id="outbreak-report-table" style="background-color: rgba(0, 0, 0, 0.5);width: 100%;">
   <thead>
     <tr>
       <th>User</th>
@@ -13,7 +86,7 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Altitude</th>
-      <th colspan="3"></th>
+      <th>Options</th>
     </tr>
   </thead>
 
@@ -28,14 +101,61 @@
         <td><%= outbreak_report.latitude %></td>
         <td><%= outbreak_report.longitude %></td>
         <td><%= outbreak_report.altitude %></td>
-        <td><%= link_to 'Show', outbreak_report %></td>
-        <td><%= link_to 'Edit', edit_outbreak_report_path(outbreak_report) %></td>
-        <td><%= link_to 'Destroy', outbreak_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', outbreak_report %>
+        <%= link_to 'Edit', edit_outbreak_report_path(outbreak_report) %>
+        <%= link_to 'Destroy', outbreak_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
 <%= link_to 'New Outbreak Report', new_outbreak_report_path %>
+
+
+<script type="text/javascript">
+
+
+    $(function(){
+      $('#outbreak-report-table').DataTable({
+        "responsive": true,
+        "pageLength": 10,
+            "language":{
+              "sProcessing":     "Procesando...",
+              "sLengthMenu":     "Mostrar _MENU_ registros",
+              "sZeroRecords":    "No se encontraron resultados",
+              "sEmptyTable":     "Ningún dato disponible en esta tabla",
+              "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+              "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+              "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+              "sInfoPostFix":    "",
+              "sSearch":         "Buscar:",
+              "sUrl":            "",
+              "sInfoThousands":  ",",
+              "sLoadingRecords": "Cargando...",
+              "oPaginate": {
+                  "sFirst":    "Primero",
+                  "sLast":     "Último",
+                  "sNext":     "Siguiente",
+                  "sPrevious": "Anterior"
+              },
+              "oAria": {
+                  "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                  "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+              }
+            }
+      });
+
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    document.addEventListener("turbolinks:before-cache", function() {
+            dataTable.destroy();
+          });
+
+
+</script>
+
+
+

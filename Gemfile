@@ -37,6 +37,10 @@ gem "twitter-bootstrap-rails"
 # Bootstrap generator
 gem 'bootstrap-sass-extras'
 
+gem 'underscore-rails'
+
+gem 'gmaps4rails'
+
 #client library to absolutely positioned elements attach to elements in the page efficiently.
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
